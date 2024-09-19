@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.Resources;
+using System.Text;
+using System.Linq;
 
 public class Program
 {
@@ -41,29 +43,87 @@ public class Program
                     exercicio1();
                     break;
                 }
+            case "2":
+                {
+                    exercicio2();
+                    break;
+                }
         }
     }
 
     private static void exercicio1()
     {
-        Console.Write("> Digite o seu nome: ");
-        string name = Console.ReadLine().Trim();
-        Console.WriteLine();
-        bool isNameValid = checkName(name);
-
-        while (!isNameValid) 
-        {
-            Console.Write("[!] Digite um nome válido: ");
-            name = Console.ReadLine().Trim();
-            Console.WriteLine();
-            isNameValid = checkName(name);
-        }
+        string name = readName();
 
         StringBuilder sb = new StringBuilder();
         sb.Append("=D Olá, ").Append(name).Append("! Seja muito bem-vindo!");
 
         Console.WriteLine(sb.ToString());
         Console.WriteLine();
+    }
+
+    private static void exercicio2()
+    {
+        string name = readName();
+        string surname = readSurname();
+
+        StringBuilder sb = new StringBuilder();
+        sb.Append("=D Olá, ").Append(name).Append(" ").Append(surname).Append("!");
+
+        Console.WriteLine(sb.ToString());
+        Console.WriteLine();
+    }
+
+    private static string readName()
+    {
+        Console.Write("> Digite o seu nome: ");
+        string name = Console.ReadLine().Trim();
+        Console.WriteLine();
+        bool isNameValid = checkName(name);
+
+        while (!isNameValid)
+        {
+            name = readInvalidName(name);
+            isNameValid = checkName(name);
+        }
+
+        string nameResult = string.Concat(name.Where(c => !char.IsWhiteSpace(c)));
+
+        return nameResult;
+    }
+
+    private static string readInvalidName(string name)
+    {
+        Console.Write("[!] Digite um nome válido: ");
+        name = Console.ReadLine().Trim();
+        Console.WriteLine();
+        return name;
+    }
+
+    private static string readSurname()
+    {
+        Console.Write("> Digite o seu sobrenome: ");
+        string surname = Console.ReadLine().Trim();
+        Console.WriteLine();
+        bool isNameValid = checkName(surname);
+
+        while (!isNameValid)
+        {
+            surname = readInvalidSurname(surname);
+            isNameValid = checkName(surname);
+        }
+
+        string surnameResult = string.Concat(surname.Where(c => !char.IsWhiteSpace(c)));
+
+        return surnameResult;
+    }
+
+    private static string readInvalidSurname(string surname)
+    {
+        Console.Write("[!] Digite um sobrenome válido: ");
+        surname = Console.ReadLine().Trim();
+        Console.WriteLine();
+        return surname;
     }
 
     private static bool checkName(string name) 
