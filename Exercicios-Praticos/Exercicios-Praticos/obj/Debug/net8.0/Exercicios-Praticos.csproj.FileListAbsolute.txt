@@ -1,0 +1,15 @@
+C:\Users\Daniel\Desktop\fundamentos-csharp\Exercicios-Praticos\Exercicios-Praticos\bin\Debug\net8.0\Exercicios-Praticos.exe
+C:\Users\Daniel\Desktop\fundamentos-csharp\Exercicios-Praticos\Exercicios-Praticos\bin\Debug\net8.0\Exercicios-Praticos.deps.json
+C:\Users\Daniel\Desktop\fundamentos-csharp\Exercicios-Praticos\Exercicios-Praticos\bin\Debug\net8.0\Exercicios-Praticos.runtimeconfig.json
+C:\Users\Daniel\Desktop\fundamentos-csharp\Exercicios-Praticos\Exercicios-Praticos\bin\Debug\net8.0\Exercicios-Praticos.dll
+C:\Users\Daniel\Desktop\fundamentos-csharp\Exercicios-Praticos\Exercicios-Praticos\bin\Debug\net8.0\Exercicios-Praticos.pdb
+C:\Users\Daniel\Desktop\fundamentos-csharp\Exercicios-Praticos\Exercicios-Praticos\obj\Debug\net8.0\Exercicios-Praticos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Daniel\Desktop\fundamentos-csharp\Exercicios-Praticos\Exercicios-Praticos\obj\Debug\net8.0\Exercicios-Praticos.AssemblyInfoInputs.cache
+C:\Users\Daniel\Desktop\fundamentos-csharp\Exercicios-Praticos\Exercicios-Praticos\obj\Debug\net8.0\Exercicios-Praticos.AssemblyInfo.cs
+C:\Users\Daniel\Desktop\fundamentos-csharp\Exercicios-Praticos\Exercicios-Praticos\obj\Debug\net8.0\Exercicios-Praticos.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Desktop\fundamentos-csharp\Exercicios-Praticos\Exercicios-Praticos\obj\Debug\net8.0\Exercicios-Praticos.sourcelink.json
+C:\Users\Daniel\Desktop\fundamentos-csharp\Exercicios-Praticos\Exercicios-Praticos\obj\Debug\net8.0\Exercicios-Praticos.dll
+C:\Users\Daniel\Desktop\fundamentos-csharp\Exercicios-Praticos\Exercicios-Praticos\obj\Debug\net8.0\refint\Exercicios-Praticos.dll
+C:\Users\Daniel\Desktop\fundamentos-csharp\Exercicios-Praticos\Exercicios-Praticos\obj\Debug\net8.0\Exercicios-Praticos.pdb
+C:\Users\Daniel\Desktop\fundamentos-csharp\Exercicios-Praticos\Exercicios-Praticos\obj\Debug\net8.0\Exercicios-Praticos.genruntimeconfig.cache
+C:\Users\Daniel\Desktop\fundamentos-csharp\Exercicios-Praticos\Exercicios-Praticos\obj\Debug\net8.0\ref\Exercicios-Praticos.dll
