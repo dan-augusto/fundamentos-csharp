@@ -1,6 +1,7 @@
 ﻿using System.Resources;
 using System.Text;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 
 public class Program
 {
@@ -48,6 +49,11 @@ public class Program
                     exercicio2();
                     break;
                 }
+            case "3":
+                {
+                    exercicio3();
+                    break;
+                }
         }
     }
 
@@ -71,6 +77,29 @@ public class Program
         sb.Append("=D Olá, ").Append(name).Append(" ").Append(surname).Append("!");
 
         Console.WriteLine(sb.ToString());
+        Console.WriteLine();
+    }
+
+    private static void exercicio3()
+    {
+        double firstNumber = readDouble();
+
+        double secondNumber = readDouble();
+
+        Console.WriteLine("Soma: " + (firstNumber + secondNumber));
+        Console.WriteLine("Subtração: " + (firstNumber - secondNumber));
+        Console.WriteLine("Multiplicação: " + (firstNumber * secondNumber));
+        if(secondNumber == 0)
+        {
+            Console.WriteLine("A divisão não pode ser realizada pois o segundo número é igual a zero.");
+        } else
+        {
+            Console.WriteLine("Divisão: " + (firstNumber / secondNumber));
+        }
+        Console.WriteLine("Média: " + (firstNumber + secondNumber) / 2);
+        Console.WriteLine();
+
+        Console.WriteLine("=D Deu certo!");
         Console.WriteLine();
     }
 
@@ -133,5 +162,43 @@ public class Program
             return true;
         }
         else return false;
+    }
+
+    private static double readDouble()
+    {
+        Console.Write("> Digite um número: ");
+        string s = Console.ReadLine();
+        Console.WriteLine();
+
+        bool isNumberValid = checkIfStringIsConvertibleToDouble(s);
+
+        if (isNumberValid)
+        {
+            return Convert.ToDouble(s);
+        }
+        else
+        {
+            do
+            {
+                Console.Write("[!] Digite um número válido: ");
+                s = Console.ReadLine();
+                Console.WriteLine();
+                isNumberValid = checkIfStringIsConvertibleToDouble(s);
+            } while (!isNumberValid);
+
+            return Convert.ToDouble(s);
+        }
+    }
+
+    private static bool checkIfStringIsConvertibleToDouble(string s)
+    {
+        try
+        {
+            Convert.ToDouble(s);
+            return true;
+        } catch (Exception e)
+        {
+            return false;
+        }
     }
 }
