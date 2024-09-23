@@ -2,6 +2,8 @@
 using System.Text;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Text.RegularExpressions;
+using System.Globalization;
 
 public class Program
 {
@@ -54,15 +56,31 @@ public class Program
                     exercicio3();
                     break;
                 }
+            case "4":
+                {
+                    exercicio4();
+                    break;
+                }
+            case "5":
+                {
+                    exercicio5();
+                    break;
+                }
+            case "6":
+                {
+                    exercicio6();
+                    break;
+                }
         }
     }
 
     private static void exercicio1()
     {
-        string name = readName();
+        Console.Write("> Digite o seu nome: ");
+        string name = readText();
 
         StringBuilder sb = new StringBuilder();
-        sb.Append("=D Olá, ").Append(name).Append("! Seja muito bem-vindo!");
+        sb.Append(">>>  Olá, ").Append(name).Append("! Seja muito bem-vindo!");
 
         Console.WriteLine(sb.ToString());
         Console.WriteLine();
@@ -70,11 +88,13 @@ public class Program
 
     private static void exercicio2()
     {
-        string name = readName();
-        string surname = readSurname();
+        Console.Write("> Digite o seu nome: ");
+        string name = readText();
+        Console.Write("> Digite o seu sobrenome: ");
+        string surname = readText();
 
         StringBuilder sb = new StringBuilder();
-        sb.Append("=D Olá, ").Append(name).Append(" ").Append(surname).Append("!");
+        sb.Append(">>>  Olá, ").Append(name).Append(" ").Append(surname).Append("!");
 
         Console.WriteLine(sb.ToString());
         Console.WriteLine();
@@ -86,34 +106,63 @@ public class Program
 
         double secondNumber = readDouble();
 
-        Console.WriteLine("Soma: " + (firstNumber + secondNumber));
-        Console.WriteLine("Subtração: " + (firstNumber - secondNumber));
-        Console.WriteLine("Multiplicação: " + (firstNumber * secondNumber));
+        Console.WriteLine(">>> Soma: " + (firstNumber + secondNumber));
+        Console.WriteLine(">>> Subtração: " + (firstNumber - secondNumber));
+        Console.WriteLine(">>> Multiplicação: " + (firstNumber * secondNumber));
         if(secondNumber == 0)
         {
-            Console.WriteLine("A divisão não pode ser realizada pois o segundo número é igual a zero.");
+            Console.WriteLine(">>> A divisão não pode ser realizada pois o segundo número é igual a zero.");
         } else
         {
-            Console.WriteLine("Divisão: " + (firstNumber / secondNumber));
+            Console.WriteLine(">>> Divisão: " + (firstNumber / secondNumber).ToString("0.00"));
         }
-        Console.WriteLine("Média: " + (firstNumber + secondNumber) / 2);
-        Console.WriteLine();
-
-        Console.WriteLine("=D Deu certo!");
+        Console.WriteLine(">>> Média: " + (firstNumber + secondNumber) / 2);
         Console.WriteLine();
     }
 
-    private static string readName()
+    private static void exercicio4()
     {
-        Console.Write("> Digite o seu nome: ");
+        Console.Write("> Digite uma frase ou alguma palavra: ");
+        string text = readText();
+
+        Console.WriteLine(">>> Total de caracteres: " + text.Count());
+        Console.WriteLine();
+    }
+
+    private static void exercicio5()
+    {
+        Console.Write("> Digite a placa do veículo: ");
+        string vehiclePlate = readText();
+
+        bool isPlateValid = checkPlate(vehiclePlate);
+
+        if(!isPlateValid)
+        {
+            Console.WriteLine("[!] Placa inválida!");
+            Console.WriteLine();
+        }
+    }
+
+    private static void exercicio6()
+    {
+        CultureInfo ptBR = new CultureInfo("pt-BR");
+        Console.WriteLine(">>> " + DateTime.Now.ToString("G", ptBR));
+        Console.WriteLine(">>> " + DateTime.Now.ToString("d", ptBR));
+        Console.WriteLine(">>> " + DateTime.Now.Hour + " horas");
+        Console.WriteLine(">>> " + DateTime.Now.ToString("D", ptBR));
+        Console.WriteLine();
+    }
+
+    private static string readText()
+    {
         string name = Console.ReadLine().Trim();
         Console.WriteLine();
-        bool isNameValid = checkName(name);
+        bool isNameValid = checkText(name);
 
         while (!isNameValid)
         {
             name = readInvalidName(name);
-            isNameValid = checkName(name);
+            isNameValid = checkText(name);
         }
 
         string nameResult = string.Concat(name.Where(c => !char.IsWhiteSpace(c)));
@@ -129,24 +178,6 @@ public class Program
         return name;
     }
 
-    private static string readSurname()
-    {
-        Console.Write("> Digite o seu sobrenome: ");
-        string surname = Console.ReadLine().Trim();
-        Console.WriteLine();
-        bool isNameValid = checkName(surname);
-
-        while (!isNameValid)
-        {
-            surname = readInvalidSurname(surname);
-            isNameValid = checkName(surname);
-        }
-
-        string surnameResult = string.Concat(surname.Where(c => !char.IsWhiteSpace(c)));
-
-        return surnameResult;
-    }
-
     private static string readInvalidSurname(string surname)
     {
         Console.Write("[!] Digite um sobrenome válido: ");
@@ -155,7 +186,7 @@ public class Program
         return surname;
     }
 
-    private static bool checkName(string name) 
+    private static bool checkText(string name) 
     {
         if (name != "" || name != null)
         {
@@ -200,5 +231,26 @@ public class Program
         {
             return false;
         }
+    }
+
+    private static bool checkPlate(string vehiclePlate)
+    {
+        if (vehiclePlate.Count() == 7)
+        {
+            string plateLetters = vehiclePlate.Substring(0, 3);
+            string plateNumbers = vehiclePlate.Substring(3, 4);
+
+            bool isPlateLettersValid = Regex.IsMatch(plateLetters, @"^[a-zA-Z]+$");
+            bool isPlateNumbersValid = Regex.IsMatch(plateNumbers, @"^[0-9]+$");
+
+            if (isPlateLettersValid && isPlateNumbersValid)
+            {
+                Console.WriteLine(">>> Placa válida: " + plateLetters.ToUpper() + " " + plateNumbers.ToUpper());
+                Console.WriteLine();
+                return true;
+            }
+            else return false;
+        }
+        else return false;
     }
 }
